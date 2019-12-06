@@ -1,0 +1,5 @@
+group Build
+  framework >= net45
+  source https://api.nuget.org/v3/index.json
+
+  nuget FAKE ~> 4.64.6

@@ -1,0 +1,7 @@
+
+
+GROUP Build
+RESTRICTION: >= net45
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    FAKE (4.64.17)
