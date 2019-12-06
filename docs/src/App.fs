@@ -21,18 +21,18 @@ let render (state: State) (dispatch: Msg -> unit) =
     Ant.layout [
         Ant.layoutSider [
             Ant.menu [
-                prop.custom("defaultSelectedKey", [| 1 |])
-                prop.custom("defaultOpenKeys", [| "sub1" |])
-                prop.custom("mode", "inline")
-                prop.children [
+                menu.theme.light
+                menu.selectedKeys [| "1" |]
+                menu.mode.inline'
+                menu.children [
                     Ant.menuIem [
-                        prop.custom("key", 1)
-                        prop.text "Page 1"
+                        menuItem.key "1"
+                        menuItem.text "Introduction"
                     ]
 
                     Ant.menuIem [
-                        prop.custom("key", 2)
-                        prop.text "Page 2"
+                        menuItem.key "2"
+                        menuItem.text "Installation"
                     ]
                 ]
             ]
@@ -40,8 +40,8 @@ let render (state: State) (dispatch: Msg -> unit) =
 
         Ant.layout [
             Ant.layoutContent [
-                prop.style [ style.padding 20 ]
-                prop.children [
+                layoutContent.style [ style.padding 20 ]
+                layoutContent.children [
                     Ant.button [
                         button.primary
                         button.size.large

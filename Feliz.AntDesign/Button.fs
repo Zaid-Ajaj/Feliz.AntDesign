@@ -17,6 +17,7 @@ type button =
     static member inline text (content: string) = prop.text content
     static member inline onClick handler = prop.onClick handler
     static member inline children (xs: ReactElement list) = prop.children xs
+    static member inline style (xs: IStyleAttribute list) = prop.style xs
 
 module button =
     [<Erase>]
