@@ -48,6 +48,17 @@ let render (state: State) (dispatch: Msg -> unit) =
                         button.icon.search
                         button.text "Click"
                     ]
+
+                    Ant.icon [
+                        icon.search
+                    ]
+
+                    Ant.icon [
+                        icon.copy
+                        icon.rotate 20.0
+                        icon.theme.twoTone
+                        icon.twoToneColor "#000"
+                    ]
                 ]
             ]
         ]
