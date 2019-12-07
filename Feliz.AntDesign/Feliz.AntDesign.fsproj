@@ -21,6 +21,7 @@
         <Compile Include="Button.fs" />
         <Compile Include="Layout.fs" />
         <Compile Include="Menu.fs" />
+        <Compile Include="Icon.fs" />
     </ItemGroup>
 
     <ItemGroup>
