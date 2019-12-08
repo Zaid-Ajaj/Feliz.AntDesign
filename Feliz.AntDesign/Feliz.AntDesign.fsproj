@@ -22,6 +22,7 @@
         <Compile Include="Layout.fs" />
         <Compile Include="Menu.fs" />
         <Compile Include="Icon.fs" />
+        <Compile Include="Typography.fs" />
     </ItemGroup>
 
     <ItemGroup>
