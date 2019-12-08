@@ -35,3 +35,15 @@ type Ant =
         ofImport "Icon" "antd" children
     static member inline icon (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Icon" "antd", createObj !!properties)
+    static member inline text (children: #seq<ReactElement>) =
+        ofImport "Typography.Text" "antd" children
+    static member inline text (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Typography.Text" "antd", createObj !!properties)
+    static member inline title (children: #seq<ReactElement>) =
+        ofImport "Typography.Title" "antd" children
+    static member inline title (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Typography.Title" "antd", createObj !!properties)
+    static member inline paragraph (children: #seq<ReactElement>) =
+        ofImport "Typography.Paragraph" "antd" children
+    static member inline paragraph (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Typography.Paragraph" "antd", createObj !!properties)
