@@ -31,3 +31,7 @@ type Ant =
         Interop.reactApi.createElement(import "Menu.Item" "antd", createObj !!properties)
     static member inline subMenu (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Menu.SubMenu" "antd", createObj !!properties)
+    static member inline icon (children: #seq<ReactElement>) =
+        ofImport "Icon" "antd" children
+    static member inline icon (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Icon" "antd", createObj !!properties)
