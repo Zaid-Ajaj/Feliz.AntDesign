@@ -13,20 +13,30 @@ type Ant =
         Interop.reactApi.createElement(import "Button" "antd", createObj !!properties)
     static member inline layout (children: #seq<ReactElement>) =
         ofImport "Layout" "antd" [] children
-    static member inline layoutHeader (children: #seq<ReactElement>) =
+    static member inline header (children: #seq<ReactElement>) =
         ofImport "Layout.Header" "antd" [] children
-    static member inline layoutFooter (children: #seq<ReactElement>) =
+    static member inline footer (children: #seq<ReactElement>) =
         ofImport "Layout.Footer" "antd" [] children
-    static member inline layoutSider (children: #seq<ReactElement>) =
+    static member inline sider (children: #seq<ReactElement>) =
         ofImport "Layout.Sider" "antd" [ ] children
-    static member inline layoutContent (children: #seq<ReactElement>) =
+    static member inline sider (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Layout.Sider" "antd",  createObj !!properties)
+    static member inline content (children: #seq<ReactElement>) =
         ofImport "Layout.Content" "antd" [ ] children
-    static member inline layoutContent (properties: IReactProperty list) =
+    static member inline content (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Layout.Content" "antd", createObj !!properties)
+    static member inline menuItemGroup (children: #seq<ReactElement>) =
+        ofImport "Menu.ItemGroup" "antd" [ ] children
+    static member inline menuItemGroup (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Menu.ItemGroup" "antd", createObj !!properties)
     static member inline menu (children: #seq<ReactElement>) =
         ofImport "Menu" "antd" children
     static member inline menu (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Menu" "antd", createObj !!properties)
+    static member inline spin (children: #seq<ReactElement>) =
+        ofImport "Spin" "antd" children
+    static member inline spin (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Spin" "antd", createObj !!properties)
     static member inline menuIem (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Menu.Item" "antd", createObj !!properties)
     static member inline subMenu (properties: IReactProperty list) =

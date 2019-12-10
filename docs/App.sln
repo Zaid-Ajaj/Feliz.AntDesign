@@ -6,6 +6,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "App", "src\App.fsproj", "{E
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Tests", "tests\Tests.fsproj", "{7821B727-268F-44AD-8136-B300B323F578}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Feliz.AntDesign", "..\Feliz.AntDesign\Feliz.AntDesign.fsproj", "{E8228460-C9A9-4E5D-89A5-079C3E1C64ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{7821B727-268F-44AD-8136-B300B323F578}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7821B727-268F-44AD-8136-B300B323F578}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7821B727-268F-44AD-8136-B300B323F578}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8228460-C9A9-4E5D-89A5-079C3E1C64ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8228460-C9A9-4E5D-89A5-079C3E1C64ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8228460-C9A9-4E5D-89A5-079C3E1C64ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8228460-C9A9-4E5D-89A5-079C3E1C64ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,102 +3,67 @@ module App
 open Feliz
 open Feliz.AntDesign
 open Elmish
+open Fable.Core
+open Fable.Core.JsInterop
 
-type State = { Count: int }
+type State = {
+    SelectedMenuItem: string array
+}
 
 type Msg =
-    | Increment
-    | Decrement
+    | SelectMenuItem of string array
 
-let init() = { Count = 0 }, Cmd.none
+let init() = { SelectedMenuItem = [| "Overview.md" |] }, Cmd.none
 
 let update (msg: Msg) (state: State) =
     match msg with
-    | Increment -> { state with Count = state.Count + 1 }, Cmd.none
-    | Decrement -> { state with Count = state.Count - 1 }, Cmd.none
+    | SelectMenuItem path -> { state with SelectedMenuItem = path }, Cmd.none
 
 let render (state: State) (dispatch: Msg -> unit) =
     Ant.layout [
-        Ant.layoutSider [
-            Ant.menu [
-                menu.theme.light
-                menu.selectedKeys [| "1" |]
-                menu.mode.inline'
-                menu.children [
-                    Ant.menuIem [
-                        menuItem.key "1"
-                        menuItem.text "Introduction"
-                    ]
+        Ant.sider [
+            sider.style [ style.backgroundColor.white ]
+            sider.children [
+                Ant.menu [
+                    menu.mode.inline'
+                    menu.theme.light
+                    menu.selectedKeys state.SelectedMenuItem
+                    menu.defaultSelectedKeys state.SelectedMenuItem
+                    menu.onSelect (fun ev -> dispatch (SelectMenuItem ev.keyPath))
+                    menu.children [
+                        Ant.menuItemGroup [
+                            menuItemGroup.title "Feliz.AntDesign"
+                            menuItemGroup.children [
+                                Ant.menuIem [
+                                    menuItem.key "Overview.md"
+                                    menuItem.text "Overview"
+                                ]
+                                Ant.menuIem [
+                                    menuItem.key "Installation.md"
+                                    menuItem.text "Installation"
+                                ]
+                            ]
+                        ]
 
-                    Ant.menuIem [
-                        menuItem.key "2"
-                        menuItem.text "Installation"
+                        Ant.menuItemGroup [
+                            menuItemGroup.title "Components"
+                            menuItemGroup.children [
+                                Ant.menuIem [
+                                    menuItem.key "Button.md"
+                                    menuItem.text "Button"
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]
         ]
 
         Ant.layout [
-            Ant.layoutContent [
-                layoutContent.style [ style.padding 20 ]
-                layoutContent.children [
-                    Ant.button [
-                        button.primary
-                        button.size.large
-                        button.icon.search
-                        button.text "Click"
-                    ]
-
-                    Ant.icon [
-                        icon.search
-                    ]
-
-                    Ant.icon [
-                        icon.copy
-                        icon.rotate 20.0
-                        icon.theme.twoTone
-                        icon.twoToneColor "#000"
-                    ]
-                    
-                    Ant.title [
-                        title.text "Introduction"
-                    ]
-                    Ant.paragraph [
-                        paragraph.text "In the process of internal desktop applications development, many different design specs and implementations would be involved, which might cause designers and developers difficulties and duplication and reduce the efficiency of development."
-                    ]
-
-                    Ant.paragraph [
-                        paragraph.text "After massive project practice and summaries, Ant Design, a design language for background"
-                        paragraph.children[
-                            Ant.text [
-                                text.text "uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development"
-                                text.strong true
-                            ]
-                        ]
-                    ]
-                    
-                    Ant.title [
-                        title.text "Another title"
-                        title.level 2
-                    ]
-
-                    Ant.paragraph [
-                        paragraph.children [
-                            Ant.text [
-                                text.text "We supply a series of design principles, practical patterns and high quality design resources"
-                                text.children [
-                                    Ant.text [
-                                        text.text "principles, practical resources"
-                                        text.code true
-                                    ]
-
-                                ]
-                            ]
-                        ]
-                        
-                    ]
-
-                    
+            Ant.content [
+                content.style [ style.padding 20; style.backgroundColor.white ]
+                content.children [
+                    MarkdownLoader.loadMarkdown (List.ofArray state.SelectedMenuItem)
                 ]
             ]
         ]

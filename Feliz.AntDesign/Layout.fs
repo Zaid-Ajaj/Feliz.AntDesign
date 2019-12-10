@@ -11,11 +11,11 @@ type layout =
 
 
 [<Erase>]
-type layoutSider =
+type sider =
     static member inline children (xs: ReactElement list) = prop.children xs
     static member inline style (xs: IStyleAttribute list) = prop.style xs
 
 [<Erase>]
-type layoutContent =
+type content =
     static member inline children (xs: ReactElement list) = prop.children xs
     static member inline style (xs: IStyleAttribute list) = prop.style xs

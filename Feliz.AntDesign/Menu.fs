@@ -4,6 +4,11 @@ open Feliz
 open Fable.Core
 open Fable.Core.JsInterop
 
+type MenuOnSelectProps =
+    abstract key : string
+    abstract keyPath : string array
+    abstract selectedKeys : string array
+
 [<Erase>]
 type menu =
     static member inline children (xs: ReactElement list) = prop.custom("children", Array.ofList xs)
@@ -32,6 +37,8 @@ type menu =
     static member inline inlineIndent (indent: int) = Interop.mkAttr "inlineIndent" indent
     /// Allows selecting menu items
     static member inline selectable (selectable: bool) = Interop.mkAttr "selectable" selectable
+    /// Called when a menu item is selected
+    static member inline onSelect(handler: MenuOnSelectProps -> unit) = Interop.mkAttr "onSelect" handler
 
 module menu =
     [<Erase>]
@@ -50,18 +57,19 @@ module menu =
 type menuItem =
     static member inline children (xs: ReactElement list) = prop.custom("children", Array.ofList xs)
     static member inline style (xs: IStyleAttribute list) = prop.style xs
-    static member inline key (key: int) = prop.key key
     static member inline key (key: string) = prop.key key
-    static member inline key (key: System.Guid) = prop.key key
     static member inline text (content: string) = prop.text content
     static member inline disabled (disabled: bool) = Interop.mkAttr "disabled" disabled
     static member inline title (title: string) = Interop.mkAttr "title" title
 
+type menuItemGroup =
+    static member inline key (key: string) = prop.key key
+    static member inline title (title: string) = Interop.mkAttr "title" title
+    static member inline children (xs: ReactElement list) = prop.custom("children", Array.ofList xs)
+
 [<Erase>]
 type subMenu =
     static member inline children (xs: ReactElement list) = prop.custom("children", Array.ofList xs)
-    static member inline key (key: int) = prop.key key
     static member inline key (key: string) = prop.key key
-    static member inline key (key: System.Guid) = prop.key key
     static member inline title (title: string) = Interop.mkAttr "title" title
     static member inline title (xs: ReactElement list) = Interop.mkAttr "title" (React.fragment xs)
