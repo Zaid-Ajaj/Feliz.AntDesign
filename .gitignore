@@ -1,8 +1,0 @@
-.ionide
-bin
-obj
-node_modules
-.fable
-paket-files
-packages
-.fake
