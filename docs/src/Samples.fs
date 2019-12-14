@@ -63,4 +63,11 @@ let samples = [
             button.primary
         ]
     ]
+
+    createSample "search-icon" [
+        Ant.icon [
+            icon.search
+        ]
+    ]
+
 ]
