@@ -18,6 +18,7 @@
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Ant.fs" />
+        <Compile Include="Grid.fs" />
         <Compile Include="Spin.fs" />
         <Compile Include="Button.fs" />
         <Compile Include="Layout.fs" />

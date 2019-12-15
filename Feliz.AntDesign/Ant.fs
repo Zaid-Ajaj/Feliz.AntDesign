@@ -57,3 +57,11 @@ type Ant =
         ofImport "Typography.Paragraph" "antd" [ ] children
     static member inline paragraph (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Typography.Paragraph" "antd", createObj !!properties)
+    static member inline row (children: #seq<ReactElement>) =
+        ofImport "Row" "antd" [ ] children
+    static member inline row (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Row" "antd", createObj !!properties)
+    static member inline col (children: #seq<ReactElement>) =
+        ofImport "Col" "antd" [ ] children
+    static member inline col (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "Col" "antd", createObj !!properties)
