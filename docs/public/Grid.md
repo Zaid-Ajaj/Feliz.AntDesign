@@ -2,47 +2,43 @@
 
 ```fsharp:basic-grid 
 Ant.row [
-    Ant.row [
-            row.children [
-                Ant.col [
-                    col.span 12
-                ]
-                Ant.col [
-                    col.span 12
-                ]
-            ]
+    row.children [
+        Ant.col [
+            col.span 12
         ]
-        Ant.row [
-            row.children [
-                Ant.col [
-                    col.span 8
-                ]
-                Ant.col [
-                    col.span 8
-                ]
-                Ant.col [
-                    col.span 8
-                ]
-            ]
+        Ant.col [
+            col.span 12
         ]
-
-        Ant.row [
-            row.children [
-                Ant.col [
-                    col.span 6
-                ]
-                Ant.col [
-                    col.span 6
-                ]
-                Ant.col [
-                    col.span 6
-                ]
-                Ant.col [
-                    col.span 6
-                ]
-            ]
+    ]
+]
+Ant.row [
+    row.children [
+        Ant.col [
+            col.span 8
         ]
-
+        Ant.col [
+            col.span 8
+        ]
+        Ant.col [
+            col.span 8
+        ]
+    ]
+]
+Ant.row [
+    row.children [
+        Ant.col [
+            col.span 6
+        ]
+        Ant.col [
+            col.span 6
+        ]
+        Ant.col [
+            col.span 6
+        ]
+        Ant.col [
+            col.span 6
+        ]
+    ]
 ]
 ```
 ```fsharp:flex-aligned-align-top-grid 
