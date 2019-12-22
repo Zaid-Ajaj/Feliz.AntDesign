@@ -6,7 +6,7 @@
         <PackageIconUrl></PackageIconUrl>
         <PackageTags>fsharp;fable;react;html;antd; ant-design;</PackageTags>
         <Authors>Zaid Ajaj</Authors>
-        <Version>0.0.4</Version>
+        <Version>0.0.5</Version>
         <TargetFramework>netstandard2.0</TargetFramework>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <PackageReleaseNotes>Implement Icon and Grid components with docs</PackageReleaseNotes>
@@ -25,6 +25,7 @@
         <Compile Include="Menu.fs" />
         <Compile Include="Icon.fs" />
         <Compile Include="Typography.fs" />
+        <Compile Include="DataDisplay.fs" />
     </ItemGroup>
 
     <ItemGroup>

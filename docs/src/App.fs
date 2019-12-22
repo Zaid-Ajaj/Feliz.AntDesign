@@ -34,11 +34,11 @@ let render (state: State) (dispatch: Msg -> unit) =
                         Ant.menuItemGroup [
                             menuItemGroup.title "Feliz.AntDesign"
                             menuItemGroup.children [
-                                Ant.menuIem [
+                                Ant.menuItem [
                                     menuItem.key "Overview.md"
                                     menuItem.text "Overview"
                                 ]
-                                Ant.menuIem [
+                                Ant.menuItem [
                                     menuItem.key "Installation.md"
                                     menuItem.text "Installation"
                                 ]
@@ -48,23 +48,32 @@ let render (state: State) (dispatch: Msg -> unit) =
                         Ant.menuItemGroup [
                             menuItemGroup.title "Components"
                             menuItemGroup.children [
-                                Ant.menuIem [
+                                Ant.menuItem [
                                     menuItem.key "Button.md"
                                     menuItem.text "Button"
                                 ]
 
-                                Ant.menuIem [
+                                Ant.menuItem [
                                     menuItem.key "Icon.md"
                                     menuItem.text "Icon"
                                 ]
-                                
-                                Ant.menuIem [
+
+                                Ant.menuItem [
                                     menuItem.key "Grid.md"
                                     menuItem.text "Grid"
                                 ]
+
+                                Ant.menuItem [
+                                    menuItem.key "Comment.md"
+                                    menuItem.text "Comment"
+                                ]
+
+                                Ant.menuItem [
+                                    menuItem.key "Collapse.md"
+                                    menuItem.text "Collapse"
+                                ]
                             ]
                         ]
-
                     ]
                 ]
             ]

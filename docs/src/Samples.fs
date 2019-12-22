@@ -2,12 +2,14 @@
 
 open Feliz
 open Feliz.AntDesign
+open System
 
 let createSample (name: string) (xs: ReactElement list) =
     name, Html.div [
         prop.style [ style.padding 10 ]
         prop.children xs
     ]
+
 
 let samples = [
     // Button
@@ -65,37 +67,105 @@ let samples = [
         ]
     ]
 
+    createSample "basic-collapse" [
+        Ant.collapse [
+            collapse.defaultActiveKey [ "1" ]
+            collapse.panels [
+                Ant.collapsePanel [
+                    collapsePanel.key "1"
+                    collapsePanel.header "This is panel header 1"
+                    collapsePanel.children [
+                        Html.p  "A dog is a type of domesticated animal. Known for its loyalty and faithfulness"
+                    ]
+                ]
+
+                Ant.collapsePanel [
+                    collapsePanel.key "2"
+                    collapsePanel.header "This is panel header 2"
+                    collapsePanel.children [
+                        Html.p  "A dog is a type of domesticated animal. Known for its loyalty and faithfulness"
+                    ]
+                ]
+
+                Ant.collapsePanel [
+                    collapsePanel.key "3"
+                    collapsePanel.disabled true
+                    collapsePanel.header "This is panel header 3"
+                    collapsePanel.children [
+                        Html.p  "A dog is a type of domesticated animal. Known for its loyalty and faithfulness"
+                    ]
+                ]
+            ]
+        ]
+    ]
+
+    createSample "basic-comment" [
+        Ant.comment [
+            comment.author [ Html.a [ prop.text "Han Solo" ] ]
+            comment.actions [
+                Html.span [
+                    prop.key "comment-like"
+                    prop.children [
+                        Ant.icon [ icon.like ]
+                    ]
+                ]
+
+                Html.span [
+                    prop.key "comment-dislike"
+                    prop.children [
+                        Ant.icon [ icon.dislike ]
+                    ]
+                ]
+            ]
+
+            comment.avatar [
+                Ant.avatar [
+                    avatar.src "https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                    avatar.alt "Han Solo"
+                ]
+            ]
+
+            comment.content [
+                Html.p "We supply a series of design principles"
+            ]
+
+            comment.datetime [
+                Html.span (DateTime.Now.ToShortDateString())
+            ]
+        ]
+    ]
+
     // Icon
     createSample "clock-circle-icon-main-example" [
         Ant.row [
             row.children [
                 Ant.col [
-                    col.span 8 
+                    col.span 8
                     col.children [
                         Ant.icon [
                             icon.clockCircle
                             icon.style [ style.fontSize 25 ]
-                        ]               
+                        ]
                     ]
                 ]
                 Ant.col [
-                    col.span 8 
+                    col.span 8
                     col.children [
                         Ant.icon [
                             icon.clockCircle
                             icon.theme.filled
                             icon.style [ style.fontSize 25 ]
-                        ]               
+                        ]
                     ]
                 ]
                 Ant.col [
-                    col.span 8 
+                    col.span 8
                     col.children [
                         Ant.icon [
                             icon.clockCircle
                             icon.theme.twoTone
                             icon.style [ style.fontSize 25 ]
-                        ]               
+                        ]
                     ]
                 ]
             ]
@@ -5581,7 +5651,7 @@ let samples = [
             ]
         ]
     ]
-    
+
 
     // Grid
     createSample "basic-grid" [
@@ -6281,7 +6351,7 @@ let samples = [
                     col.sm 16
                     col.md 12
                     col.lg 8
-                    col.xl 4 
+                    col.xl 4
                     col.style [ style.backgroundColor "#5ab9f4"; style.height 50 ]
                     col.children [
                         Ant.title [

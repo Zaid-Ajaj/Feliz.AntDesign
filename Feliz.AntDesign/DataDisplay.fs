@@ -4,31 +4,35 @@ open Feliz
 open Fable.Core
 open Fable.Core.JsInterop
 
-[<Erase>]
-type button =
-    static member inline primary = Interop.mkAttr "type" "primary"
-    static member inline dashed = Interop.mkAttr "type" "dashed"
-    static member inline danger = Interop.mkAttr "type" "danger"
-    static member inline link = Interop.mkAttr "type" "link"
-    static member inline ghost = Interop.mkAttr "type" "ghost"
-    static member inline disabled (disabled: bool) = Interop.mkAttr "disabled" disabled
-    static member inline loading(loading: bool) = Interop.mkAttr "loading" loading
-    static member inline loading(delay: int) = Interop.mkAttr "loading" (createObj [ "delay" ==> delay ])
-    static member inline text (content: string) = prop.text content
-    static member inline onClick handler = prop.onClick handler
-    static member inline children (xs: ReactElement list) = prop.children xs
-    static member inline style (xs: IStyleAttribute list) = prop.style xs
+module internal Interop =
+    [<Emit("Object.entries($0)")>]
+    let inline objectEntries (x: obj) : (obj * obj) array = jsNative
 
-module button =
+[<Erase>]
+type avatar =
+    /// the size of the avatar
+    static member inline size(size: int) = Interop.mkAttr "size" size
+    /// the address of the image for an image avatar
+    static member inline src(source: string) = Interop.mkAttr "src" source
+    ///	a list of sources to use for different screen resolutions
+    static member inline srcSet(set: string) = Interop.mkAttr "srcSet" set
+    /// This attribute defines the alternative text describing the image
+    static member inline alt(alt: string) = Interop.mkAttr "alt" alt
+    /// handler when img load error, return false to prevent default fallback behavior
+    static member inline onError(handler: unit -> bool) = Interop.mkAttr "onError" handler
+
+module avatar =
     [<Erase>]
+    /// The shape of avatar
     type shape =
-        static member inline circle = Interop.mkAttr "shape" "circle"
         static member inline round = Interop.mkAttr "shape" "round"
+        static member inline square = Interop.mkAttr "shape" "square"
 
     [<Erase>]
     type size =
-        static member inline small = Interop.mkAttr "size" "small"
+        static member inline default' = Interop.mkAttr "size" "default"
         static member inline large = Interop.mkAttr "size" "large"
+        static member inline small = Interop.mkAttr "size" "small"
 
     [<Erase>]
     type icon =
@@ -398,3 +402,103 @@ module button =
         static member inline wifi = Interop.mkAttr "icon" "wifi"
         static member inline woman = Interop.mkAttr "icon" "woman"
 
+[<Erase>]
+type badge =
+    static member inline style (styles: IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
+    static member inline children (children: ReactElement list) = prop.children children
+    static member inline color (color: string) = Interop.mkAttr "color" color
+    /// Whether to display a red dot instead of `count`
+    static member inline dot (dot: bool) = Interop.mkAttr "dot" dot
+    /// Number to show in badge
+    static member inline count (count: int) = Interop.mkAttr "count" count
+    /// Number to show in badge
+    static member inline count (count: ReactElement list) = Interop.mkAttr "count" (React.fragment count)
+    /// Whether to show badge when count is zero. Default is `false`.
+    static member inline showZero (showZero: bool) = Interop.mkAttr "showZero" showZero
+    /// If `status` is set, `text` sets the display text of the status dot
+    static member inline text (text: string) = Interop.mkAttr "text" text
+    /// Text to show when hovering over the badge
+    static member inline title (title: string) = Interop.mkAttr "title" title
+    /// Max count to show. Default is 99.
+    static member inline overflowCount (count: int) = Interop.mkAttr "overflowCount" count
+    /// Offset of the badge dot
+    static member inline offset (x: int, y: int) = Interop.mkAttr "offset" (x,y)
+
+[<Erase>]
+type comment =
+    static member inline style (styles: IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
+    /// List of action items rendered below the comment content
+    static member inline actions(actions: ReactElement list) = Interop.mkAttr "actions" (Array.ofList actions)
+    /// The element to display as the comment author
+    static member inline author (author: string) = Interop.mkAttr "author" author
+    /// The element to display as the comment author
+    static member inline author (author: ReactElement list) = Interop.mkAttr "author" (React.fragment author)
+    /// The element to display as the comment avatar - generally an antd Avatar or src
+    static member inline avatar (avatar: string) = Interop.mkAttr "avatar" avatar
+    /// The element to display as the comment avatar - generally an antd Avatar or src
+    static member inline avatar (avatar: ReactElement list) = Interop.mkAttr "avatar" (React.fragment avatar)
+    /// The main content of the comment
+    static member inline content (avatar: string) = Interop.mkAttr "content" avatar
+    /// The main content of the comment
+    static member inline content (avatar: ReactElement list) = Interop.mkAttr "content" (React.fragment avatar)
+    static member inline datetime (datetime: string) = Interop.mkAttr "datetime" datetime
+    static member inline datetime (datetime: ReactElement list) = Interop.mkAttr "datetime" (React.fragment datetime)
+    static member inline children (children: ReactElement list) = prop.children children
+
+[<Erase>]
+type collapse =
+    static member inline style (styles: IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
+    /// Key of the active panel
+    static member inline activeKey (key: string) = Interop.mkAttr "activeKey" key
+    /// Keys of the active panels
+    static member inline activeKey (keys: string list) = Interop.mkAttr "activeKey" (Array.ofList keys)
+    /// Key of the initial active panel
+    static member inline defaultActiveKey (key: string) = Interop.mkAttr "defaultActiveKey" key
+    /// Keys of the initial active panels
+    static member inline defaultActiveKey (keys: string list) = Interop.mkAttr "defaultActiveKey" (Array.ofList keys)
+    /// Toggles rendering of the border around the collapse block.
+    static member inline bordered (value: bool) = Interop.mkAttr "bordered" value
+    /// If true, Collapse renders as Accordion
+    static member inline accordion (value: bool) = Interop.mkAttr "accordion" value
+    /// Destroy Inactive Panel
+    static member inline destroyInactivePanel (value: bool) = Interop.mkAttr "destroyInactivePanel" value
+    /// The panels of the Collapse component
+    static member inline panels (panels: ICollapsePanel list) = prop.children (unbox<ReactElement list> panels)
+    static member inline onChange (handler: string list -> unit) = Interop.mkAttr "onChange" (List.ofArray >> handler)
+    static member inline expandIcon (render: IReactProperty list -> ReactElement) =
+        Interop.mkAttr "expandIcon" (fun props -> Interop.objectEntries(props) |> unbox |> List.ofArray |> render)
+
+module collapse =
+    [<Erase>]
+    type expandIconPosition =
+        static member inline left = Interop.mkAttr "expandIconPosition" "left"
+        static member inline right = Interop.mkAttr "expandIconPosition" "right"
+
+[<Erase>]
+type collapsePanel =
+    static member inline style (styles: IStyleAttribute list) = Interop.mkAttr "style" (createObj !!styles)
+    /// If true, panel cannot be opened or closed.
+    static member inline disabled (value: bool) = Interop.mkAttr "disabled" value
+    /// Forced render of content on panel, instead of lazy rending after clicking on header. Default is false
+    static member inline forceRender (value: bool) = Interop.mkAttr "forceRender" value
+    /// Title of the panel
+    static member inline header (content: string) = Interop.mkAttr "header" content
+    /// Title of the panel
+    static member inline header (content: ReactElement list) = Interop.mkAttr "header" (React.fragment content)
+    /// Unique key identifying the panel from among its siblings.
+    static member inline key (key: string) = Interop.mkAttr "key" key
+    /// If false, panel will not show arrow icon
+    static member inline showArrow (value: bool) = Interop.mkAttr "showArrow" value
+    /// Extra element in the corner
+    static member inline extra (node: ReactElement list) = Interop.mkAttr "extra" (React.fragment node)
+    static member inline children (elements: ReactElement list) = prop.children elements
+    static member inline text (content: string) = prop.text content
+
+module badge =
+    [<Erase>]
+    type status =
+        static member inline success = Interop.mkAttr "status" "success"
+        static member inline processing = Interop.mkAttr "status" "processing"
+        static member inline error = Interop.mkAttr "status" "error"
+        static member inline warning = Interop.mkAttr "status" "warning"
+        static member inline default' = Interop.mkAttr "status" "default"
