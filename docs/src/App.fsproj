@@ -3,7 +3,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Samples.fs" />
+    <Compile Include="Sample.fs" />
+    <Compile Include="Breadcrumb.fs" />
+    <Compile Include="Grid.fs" />
+    <Compile Include="Icon.fs" />
+    <Compile Include="Comment.fs" />
+    <Compile Include="Collapse.fs" />
+    <Compile Include="Button.fs" />
+    <Compile Include="All.fs" />
     <Compile Include="MarkdownLoader.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Main.fs" />

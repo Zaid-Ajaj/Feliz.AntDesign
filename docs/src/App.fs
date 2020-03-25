@@ -54,13 +54,13 @@ let render (state: State) (dispatch: Msg -> unit) =
                                 ]
 
                                 Ant.menuItem [
-                                    menuItem.key "Icon.md"
-                                    menuItem.text "Icon"
+                                    menuItem.key "Grid.md"
+                                    menuItem.text "Grid"
                                 ]
 
                                 Ant.menuItem [
-                                    menuItem.key "Grid.md"
-                                    menuItem.text "Grid"
+                                    menuItem.key "Breadcrumb.md"
+                                    menuItem.text "Breadcrumb"
                                 ]
 
                                 Ant.menuItem [

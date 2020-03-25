@@ -1,13 +1,14 @@
 ﻿module MarkdownLoader
 
-open Feliz
 open Elmish
-open Feliz.ElmishComponents
-open Fable.SimpleHttp
-open Fable.Core
-open Fable.Core.JsInterop
+open Feliz
 open Feliz.Markdown
 open Feliz.AntDesign
+open Feliz.ElmishComponents
+open Fable.SimpleHttp
+
+open Fable.Core
+open Fable.Core.JsInterop
 
 type State =
     | Initial
@@ -37,7 +38,7 @@ let codeBlockRenderer (codeProps: Markdown.ICodeProperties) =
         let languageParts = codeProps.language.Split(':')
         let sampleName = languageParts.[1]
         let sampleApp =
-            Samples.samples
+            All.samples
             |> List.tryFind (fun (name, _) -> name = sampleName)
             |> Option.map snd
             |> Option.defaultValue (Html.h1 [
@@ -74,7 +75,6 @@ let update (msg: Msg) (state: State) =
     match msg with
     | StartLoading path ->
         let loadMarkdownAsync() = async {
-            do! Async.Sleep 1000
             let! (statusCode, responseText) = Http.get (resolvePath path)
             if statusCode = 200
             then return Loaded (Ok responseText)
@@ -135,9 +135,7 @@ let centeredSpinner =
             style.marginTop 50
         ]
         prop.children [
-            Ant.spin [
-                spin.size.large
-            ]
+            Ant.spin [ spin.size.large ]
         ]
     ]
 

@@ -13,24 +13,25 @@
     </PropertyGroup>
     <PropertyGroup>
         <NpmDependencies>
-            <NpmPackage Name="antd" Version="&gt;= 3.26.0 &lt; 4.0.0" ResolutionStrategy="max" />
+            <NpmPackage Name="antd" Version="&gt;= 4.0.0 &lt; 5.0.0" ResolutionStrategy="max" />
         </NpmDependencies>
     </PropertyGroup>
     <ItemGroup>
+        <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
         <Compile Include="Ant.fs" />
+        <Compile Include="Icon.fs" />
         <Compile Include="Grid.fs" />
+        <Compile Include="Breadcrumb.fs" />
         <Compile Include="Spin.fs" />
         <Compile Include="Button.fs" />
         <Compile Include="Layout.fs" />
         <Compile Include="Menu.fs" />
-        <Compile Include="Icon.fs" />
+
         <Compile Include="Typography.fs" />
         <Compile Include="DataDisplay.fs" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Include="*.fsproj; *.fs; *.js;" PackagePath="fable\" />
-    </ItemGroup>
+    <ItemGroup />
 
     <ItemGroup>
         <PackageReference Include="Feliz" Version="0.68.9" />

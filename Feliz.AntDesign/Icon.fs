@@ -5,6 +5,24 @@ open Fable.Core
 open Fable.Core.JsInterop
 
 [<Erase>]
+module AntIcons =
+    let inline homeOutlined (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "HomeOutlined" "@ant-design/icons", createObj !!properties)
+    let inline settingFilled (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "SettingFilled" "@ant-design/icons", createObj !!properties)
+    let inline searchOutlined (properties: IReactProperty list) =
+        Interop.reactApi.createElement(import "SearchOutlined" "@ant-design/icons", createObj !!properties)
+
+[<Erase>]
+type icon =
+    static member inline style (xs: IStyleAttribute list) = prop.style xs
+    static member inline className (name: string) = prop.className name
+    static member inline spin (value: bool) = prop.custom("spin", value)
+    static member inline rotate (degree: int) = prop.custom("rotate", degree)
+    static member inline twoToneColor (color: string) = prop.custom("twoToneColor", color)
+
+(*
+[<Erase>]
 type icon =
     static member inline style (xs: IStyleAttribute list) = prop.style xs
     static member inline search = Interop.mkAttr "type" "search"
@@ -382,4 +400,4 @@ module icon =
     type theme =
         static member inline filled = Interop.mkAttr "theme" "filled"
         static member inline light = Interop.mkAttr "theme" "outlined"
-        static member inline twoTone = Interop.mkAttr "theme" "twoTone"
+        static member inline twoTone = Interop.mkAttr "theme" "twoTone"*)

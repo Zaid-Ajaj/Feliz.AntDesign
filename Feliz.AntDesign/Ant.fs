@@ -6,6 +6,7 @@ open Fable.Core.JsInterop
 open Fable.React
 
 type ICollapsePanel = interface end
+type IBreadcrumbItem = interface end
 
 [<Erase>]
 type Ant =
@@ -43,10 +44,6 @@ type Ant =
         Interop.reactApi.createElement(import "Menu.Item" "antd", createObj !!properties)
     static member inline subMenu (properties: IReactProperty list) =
         Interop.reactApi.createElement(import "Menu.SubMenu" "antd", createObj !!properties)
-    static member inline icon (children: #seq<ReactElement>) =
-        ofImport "Icon" "antd" children
-    static member inline icon (properties: IReactProperty list) =
-        Interop.reactApi.createElement(import "Icon" "antd", createObj !!properties)
     static member inline text (children: #seq<ReactElement>) =
         ofImport "Typography.Text" "antd" [ ] children
     static member inline text (properties: IReactProperty list) =
@@ -87,3 +84,29 @@ type Ant =
     static member inline collapsePanel (properties: #seq<IReactProperty>) =
         Interop.reactApi.createElement(import "Collapse.Panel" "antd", createObj !!properties)
         |> unbox<ICollapsePanel>
+
+    static member inline breadcrumb (properties: #seq<IReactProperty>) = 
+        Interop.reactApi.createElement(import "Breadcrumb" "antd", createObj !!properties)
+
+    static member inline breadcrumb (items:  IBreadcrumbItem list) = 
+        ofImport "Breadcrumb" "antd" [ ] (unbox items)
+
+    static member inline breadcrumbItem (properties: #seq<IReactProperty>) = 
+        Interop.reactApi.createElement(import "Breadcrumb.Item" "antd", createObj !!properties)
+        |> unbox<IBreadcrumbItem>
+
+    static member inline breadcrumbItem (children: ReactElement list) = 
+        ofImport "Breadcrumb.Item" "antd" [ ] children
+        |> unbox<IBreadcrumbItem>
+
+    static member inline breadcrumbItem (content: string) = 
+        ofImport "Breadcrumb.Item" "antd" [ ] [ Html.text content ]
+        |> unbox<IBreadcrumbItem>
+
+    static member inline breadcrumbSeparator (children: ReactElement list) = 
+        ofImport "Breadcrumb.Separator" "antd" [ ] children
+        |> unbox<IBreadcrumbItem>
+
+    static member inline breadcrumbSeparator (content: string) = 
+        ofImport "Breadcrumb.Separator" "antd" [ ] [ Html.text content ]
+        |> unbox<IBreadcrumbItem>
