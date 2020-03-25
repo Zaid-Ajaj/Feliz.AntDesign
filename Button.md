@@ -23,8 +23,8 @@ Ant.button [
 ```fsharp:ghost-button
 Ant.button [
     button.ghost
-    button.icon.search
     button.text "Ghost"
+    button.icon.searchOutlined()
 ]
 ```
 
@@ -44,8 +44,15 @@ Ant.button [
 ```
 ```fsharp:round-button
 Ant.button [
-    button.shape.round
-    button.icon.search
     button.primary
+    button.shape.round
+    button.icon.homeOutlined()
+]
+```
+```fsharp:custom-icon
+Ant.button [
+    button.primary
+    button.shape.round
+    button.icon (AntIcons.homeOutlined [ icon.spin true ])
 ]
 ```
